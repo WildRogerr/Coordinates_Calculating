@@ -511,9 +511,7 @@ class ScConverterList:
         # Создать список для координат.
         coordinates_list = []
         for file_strings_list in self.file_strings:
-            file_strings_list = list(file_strings_list)
-            file_strings_list_str = "".join(file_strings_list)
-            file_strings_list_str = file_strings_list_str.rstrip('\n')
+            file_strings_list_str = file_strings_list.rstrip(',\n')
             file_strings_list_data = file_strings_list_str.split(",")
             try: name = file_strings_list_data[0]
             except (IndexError,ValueError):
@@ -548,9 +546,7 @@ class ScConverterList:
         # Создать список для координат.
         coordinates_list = []
         for file_strings_list in self.file_strings:
-            file_strings_list = list(file_strings_list)
-            file_strings_list_str = "".join(file_strings_list)
-            file_strings_list_str = file_strings_list_str.rstrip('\n')
+            file_strings_list_str = file_strings_list.rstrip(',\n')
             file_strings_list_data = file_strings_list_str.split(",")
             try: name = file_strings_list_data[0]
             except (IndexError,ValueError):
