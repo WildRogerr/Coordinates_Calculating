@@ -499,12 +499,11 @@ class ScConverterList:
 
     # Проверка файла на наличие ошибок форматирования msk_ekb.
     def msk_ekb_check (self):
-        check = self.convert_msk_ekb()
-        if check != 0:
+        try: self.convert_msk_ekb()
+        except:
             tkinter.messagebox.showinfo("Ошибка", "Неверное форматирование файла с координатами.")
-        else:
-            self.done.set('Расчет координат произведен успешно!')
-            self.state_button_check()
+        self.done.set('Расчет координат произведен успешно!')
+        self.state_button_check()
 
     # Метод конвертирования координат из ЕКБ в МСК66.
     def convert_ekb_msk(self):
@@ -513,33 +512,20 @@ class ScConverterList:
         for file_strings_list in self.file_strings:
             file_strings_list_str = file_strings_list.rstrip(',\n')
             file_strings_list_data = file_strings_list_str.split(",")
-            try: name = file_strings_list_data[0]
-            except (IndexError,ValueError):
-                return 1
-            try: X = float(file_strings_list_data[1])
-            except (IndexError,ValueError):
-                return 1
-            try: Y = float(file_strings_list_data[2])
-            except (IndexError,ValueError):
-                return 1
-            try: high = file_strings_list_data[3]
-            except (IndexError,ValueError):
-                return 1
+            name = file_strings_list_data[0]
+            X = float(file_strings_list_data[1])
+            Y = float(file_strings_list_data[2])
+            high = file_strings_list_data[3]
 
             # Конвертировать координаты.
-            try:
-                X2 = float(350201.477094956 + X * 0.999947241 + Y * 0.007808129)
-                Y2 = float(1492688.10180136 + X * (-0.007807914) + Y * 0.999947949)
+            X2 = float(350201.477094956 + X * 0.999947241 + Y * 0.007808129)
+            Y2 = float(1492688.10180136 + X * (-0.007807914) + Y * 0.999947949)
             
-                # Заполнить список.
-                coordinates = (f'{name},{X2:.3f},{Y2:.3f},{high}')
-                coordinates_list.append(coordinates)
-            except UnboundLocalError:
-                return 1
+            # Заполнить список.
+            coordinates = (f'{name},{X2:.3f},{Y2:.3f},{high}')
+            coordinates_list.append(coordinates)
 
         self.coordinates_list_full = coordinates_list
-        
-        return 0
     
     # Метод конвертирования координат из МСК66 в ЕКБ.
     def convert_msk_ekb(self):
