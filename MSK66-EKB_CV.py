@@ -283,7 +283,7 @@ class ScConverterGUI:
         tkinter.messagebox.showinfo("О программе", "Разработка: WildRoger                                                                                                                                                                     "
                                     "E-mail: mx.sverre@gmail.com                                             "
                                     "Github: github.com/WildRogerr                                                                                                                                                            "
-                                    "Версия 0.3")
+                                    "Версия 1.0")
 
     # Метод Bobr KURWA!    
     def click_bobr(self):
