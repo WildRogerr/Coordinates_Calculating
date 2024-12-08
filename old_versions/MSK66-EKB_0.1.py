@@ -10,7 +10,7 @@ class ScConverterGUI:
         self.main_window.geometry("500x160")
         self.main_window.resizable(width=False, height=False)
         self.main_window.title ('MSK66-EKB')
-        self.main_window.iconbitmap(default="./icons8-beaver-48.ico")
+        self.main_window.iconbitmap(default="./img/icons8-beaver-48.ico")
 
         # Создать виджет меню.
         self.main_menu = tkinter.Menu()
@@ -126,8 +126,8 @@ class ScConverterGUI:
         self.output_text.pack(side='left',padx=(3,22), pady=5)
 
         # Создать переменные для отображения кртинок на кнопках.
-        self.image_question = tkinter.PhotoImage(file = ".\icon_question16.png")
-        self.image_bobr = tkinter.PhotoImage(file = ".\icons8-beaver-16.png")
+        self.image_question = tkinter.PhotoImage(file = "./img/icon_question16.png")
+        self.image_bobr = tkinter.PhotoImage(file = "./cons8-beaver-16.png")
 
         # Создать виджеты Button для нижней рамки.
         self.question_button = tkinter.Button(self.bottom_frame,
